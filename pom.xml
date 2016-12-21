@@ -1,0 +1,159 @@
+<!-- ~ Copyright 2015 Uppsala University Library ~ ~ This file is part of 
+	Cora. ~ ~ Cora is free software: you can redistribute it and/or modify ~ 
+	it under the terms of the GNU General Public License as published by ~ the 
+	Free Software Foundation, either version 3 of the License, or ~ (at your 
+	option) any later version. ~ ~ Cora is distributed in the hope that it will 
+	be useful, ~ but WITHOUT ANY WARRANTY; without even the implied warranty 
+	of ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the ~ GNU General 
+	Public License for more details. ~ ~ You should have received a copy of the 
+	GNU General Public License ~ along with Cora. If not, see <http://www.gnu.org/licenses/>. -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>se.uu.ub.cora</groupId>
+		<artifactId>cora-parent</artifactId>
+		<version>0.5-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>cora-docker-therest</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>The Rest docker</name>
+
+	<properties>
+		<systemone.version>0.11-SNAPSHOT</systemone.version>
+		<therest.version>0.13-SNAPSHOT</therest.version>
+		<basicstorage.version>0.3-SNAPSHOT</basicstorage.version>
+	</properties>
+
+	<scm>
+		<connection>scm:git:https://git.epc.ub.uu.se/epc/cora-docker-therest.git</connection>
+		<developerConnection>scm:git:https://git.epc.ub.uu.se/epc/cora-docker-therest.git</developerConnection>
+		<url>https://git.epc.ub.uu.se/epc/cora-docker-therest.git</url>
+	</scm>
+
+	<repositories>
+		<repository>
+			<id>epc-release</id>
+			<name>EPC Nexus Release Repository</name>
+			<url>http://epc.ub.uu.se/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>epc-snapshot</id>
+			<name>EPC Nexus Snapshot Repository</name>
+			<url>http://epc.ub.uu.se/nexus/content/groups/public-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<updatePolicy>daily</updatePolicy>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>systemone</artifactId>
+			<version>${systemone.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>therest</artifactId>
+			<version>${therest.version}</version>
+			<type>war</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>basicstorage</artifactId>
+			<version>${basicstorage.version}</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/docker</outputDirectory>
+							<excludeArtifactIds>basicstorage</excludeArtifactIds>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeTransitive>true</excludeTransitive>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>unpack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>se.uu.ub.cora</groupId>
+									<artifactId>basicstorage</artifactId>
+									<version>${basicstorage.version}</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/docker</outputDirectory>
+									<includes>**/*.json</includes>
+								</artifactItem>
+							</artifactItems>
+							<includes>**/*.java</includes>
+							<excludes>**/*.properties</excludes>
+							<outputDirectory>${project.build.directory}/wars</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<imageName>therest</imageName>
+					<dockerDirectory>docker</dockerDirectory>
+					<resources>
+					</resources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

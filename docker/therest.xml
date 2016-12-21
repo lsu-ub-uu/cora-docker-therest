@@ -1,0 +1,4 @@
+<Context>
+	<Parameter name="dependencyProviderClassName"
+		value="se.uu.ub.cora.systemone.SystemOneDependencyProvider" override="false" />
+</Context>
