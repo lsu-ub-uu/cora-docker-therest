@@ -1,5 +1,0 @@
-<Context>
-	<Parameter name="userPickerFactoryClassName"
-		value="se.uu.ub.cora.systemone.authentication.UserPickerFactoryImp"
-		override="false" />
-</Context>
