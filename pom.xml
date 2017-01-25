@@ -26,7 +26,6 @@
 	<properties>
 		<systemone.version>0.11-SNAPSHOT</systemone.version>
 		<therest.version>0.13-SNAPSHOT</therest.version>
-		<basicstorage.version>0.3-SNAPSHOT</basicstorage.version>
 	</properties>
 
 	<scm>
@@ -75,12 +74,6 @@
 			<type>war</type>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>se.uu.ub.cora</groupId>
-			<artifactId>basicstorage</artifactId>
-			<version>${basicstorage.version}</version>
-			<scope>compile</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -104,31 +97,6 @@
 							<overWriteIfNewer>true</overWriteIfNewer>
 							<excludeTransitive>true</excludeTransitive>
 							<stripVersion>true</stripVersion>
-						</configuration>
-					</execution>
-					<execution>
-						<id>unpack</id>
-						<phase>package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>se.uu.ub.cora</groupId>
-									<artifactId>basicstorage</artifactId>
-									<version>${basicstorage.version}</version>
-									<type>jar</type>
-									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/docker</outputDirectory>
-									<includes>**/*.json</includes>
-								</artifactItem>
-							</artifactItems>
-							<includes>**/*.java</includes>
-							<excludes>**/*.properties</excludes>
-							<outputDirectory>${project.build.directory}/wars</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
