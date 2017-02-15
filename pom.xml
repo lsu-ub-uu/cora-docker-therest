@@ -20,12 +20,12 @@
 
 	<artifactId>cora-docker-therest</artifactId>
 	<packaging>pom</packaging>
-	<version>0.2-SNAPSHOT</version>
+	<version>0.3-SNAPSHOT</version>
 	<name>The Rest docker</name>
 
 	<properties>
-		<systemone.version>0.12-SNAPSHOT</systemone.version>
-		<therest.version>0.14-SNAPSHOT</therest.version>
+		<systemone.version>0.13-SNAPSHOT</systemone.version>
+		<therest.version>0.15-SNAPSHOT</therest.version>
 	</properties>
 
 	<scm>
