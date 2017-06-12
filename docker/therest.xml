@@ -5,4 +5,6 @@
 		override="false" />
 	<Parameter name="storageOnDiskBasePath" value="/mnt/data/basicstorage/"
 		override="false" />
+	<Parameter name="solrURL" value="http://solr:8983/solr/coracore"
+		override="false" />
 </Context>
