@@ -9,6 +9,6 @@
 		override="false" />
 	<Parameter name="solrURL" value="http://solr:8983/solr/coracore"
 		override="false" />
-	<Parameter name="publicPathToSystem" value="/systemone/rest/"
+	<Parameter name="theRestPublicPathToSystem" value="/systemone/rest/"
 		override="false" />
 </Context>
