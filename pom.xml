@@ -55,6 +55,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>cora-metadata</artifactId>
+			<version>${cora-metadata.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>systemone-metadata</artifactId>
+			<version>${systemone-metadata.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
 			<artifactId>systemone</artifactId>
 			<version>${systemone.version}</version>
 			<scope>compile</scope>
