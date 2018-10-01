@@ -25,7 +25,7 @@
 	<name>The Rest docker</name>
 
 	<properties>
-		<systemone.version>0.13-SNAPSHOT</systemone.version>
+		<systemone.version>0.14-SNAPSHOT</systemone.version>
 		<therest.version>0.15-SNAPSHOT</therest.version>
 		<cora-metadata.version>0.1-SNAPSHOT</cora-metadata.version>
 		<systemone-metadata.version>0.1-SNAPSHOT</systemone-metadata.version>
