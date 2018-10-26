@@ -138,8 +138,7 @@
 									<version>${systemone-metadata.version}</version>
 								</artifactItem>
 							</artifactItems>
-							<includes>**/*.json</includes>
-							<includes>**/*.json.gz</includes>
+							<includes>**/*.json*</includes>
 							<outputDirectory>${outputDirectory}</outputDirectory>
 							<overWrite>true</overWrite>
 							<overWriteReleases>true</overWriteReleases>
