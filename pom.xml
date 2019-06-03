@@ -36,7 +36,7 @@
 		<outputDirectory>${project.build.directory}/docker2</outputDirectory>
 
 		<systemone.version>1.1.0</systemone.version>
-		<therest.version>1.1.0</therest.version>
+		<therest.version>1.3.0</therest.version>
 		<cora-metadata.version>0.2-SNAPSHOT</cora-metadata.version>
 		<systemone-metadata.version>0.2-SNAPSHOT</systemone-metadata.version>
 	</properties>
