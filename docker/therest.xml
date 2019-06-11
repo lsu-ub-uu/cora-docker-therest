@@ -3,8 +3,6 @@
 		value="se.uu.ub.cora.systemone.SystemOneDependencyProvider" override="false" />
 	<Parameter name="gatekeeperURL" value="http://gatekeeper:8080/gatekeeperserver/"
 		override="false" />
-	<Parameter name="storageOnDiskClassName" value="se.uu.ub.cora.storage.RecordStorageInMemoryReadFromDisk"
-		override="false" />	  
 	<Parameter name="storageOnDiskBasePath" value="/mnt/data/basicstorage/"
 		override="false" />
 	<Parameter name="solrURL" value="http://solr:8983/solr/coracore"

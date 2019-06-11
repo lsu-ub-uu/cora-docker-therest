@@ -34,9 +34,13 @@
 
 	<properties>
 		<outputDirectory>${project.build.directory}/docker2</outputDirectory>
-
-		<systemone.version>1.1.0</systemone.version>
-		<therest.version>1.1.0</therest.version>
+		
+		<coralog4j.version>1.0.0</coralog4j.version>
+		<storage.version>1.0.0</storage.version>
+		<basicstorage.version>1.4.0</basicstorage.version>
+		<systemone-basicstorage.version>1.0.0</systemone-basicstorage.version>
+		<systemone.version>1.2.0</systemone.version>
+		<therest.version>1.4.0</therest.version>
 		<cora-metadata.version>0.2-SNAPSHOT</cora-metadata.version>
 		<systemone-metadata.version>0.2-SNAPSHOT</systemone-metadata.version>
 	</properties>
@@ -48,6 +52,30 @@
 	</scm>
 
 	<dependencies>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>storage</artifactId>
+			<version>${storage.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${coralog4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>basicstorage</artifactId>
+			<version>${basicstorage.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>systemone-basicstorage</artifactId>
+			<version>${systemone-basicstorage.version}</version>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>se.uu.ub.cora</groupId>
 			<artifactId>cora-metadata</artifactId>
@@ -115,8 +143,6 @@
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
-							<excludeTransitive>true</excludeTransitive>
-							<stripVersion>true</stripVersion>
 						</configuration>
 					</execution>
 					<execution>
